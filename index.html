@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>My web page</title>
     <link rel="stylesheet" href="style.css">
+    <script src='https://cdn.jsdelivr.net/npm/p5@2.0.3/lib/p5.min.js'></script>
 </head>
 <body>
     <h1>私のページ</h1>
@@ -23,6 +24,7 @@
         の階乗は <span id="fresult">1</span> です
     色を選択: <input type="color" id="cpicker" value="#ff0000"><br>
         選択した色は <code id="cstring">#ff0000</code> です。
+    
     <script>
         const gradation = document.getElementById("gradation");
         for (let i = 0; i < 360; i += 15) {
@@ -87,6 +89,77 @@
             cstring.style.color = "white";
             cstring.style.backgroundColor = color;
         });
+
+        function setup() {
+            createCanvas(320, 180); // キャンバスのサイズを指定
+        }
+
+        function draw() {
+            background("lightgray"); // 背景色を設定
+            noFill();
+            stroke("red");
+            line(25, 25, 125, 75);
+            stroke("green");
+            rect(25, 25, 100, 50);
+            stroke("blue");
+            fill("orange");
+            ellipse(200, 50, 120, 60);
+            noStroke();
+            fill("cyan");
+            triangle(50, 170, 200, 170, 100, 120);
+            fill("magenta");
+            triangle(75, 160, 225, 160, 125, 110);
+            fill("yellow");
+            triangle(100, 150, 250, 150, 150, 100);
+        }
+        function draw(){
+            noStroke();
+            for (y = 0; y < 180; y += 10) {
+                for (x = 0; x < 320; x += 10) {
+                    fill(`oklch(90% ${100 - x / 3.2}% ${y * 2})`);
+                    ellipse(x + 5, y + 5, 8, 8);
+                }
+            } 
+        }
+        function draw(){
+            const n = 100;
+            const fruits =["🍏", "🍑", "🍇", "🍐"];
+            textSize(10);
+            for (let count = 0; count < n; count++) {
+                let r = 20 + count / n * 70, t = count * 19;
+                let x = 160 + 1.6 * r * cos(t / 180 * 3.14), 
+                    y = 100 + r * sin(t / 180 * 3.14);
+                text(fruits[count % fruits.length], x, y);
+            }
+        }
+        function draw(){
+            textSize(18);
+            const chars = ["か", "が", "わ", "だ", "い", "が", "く"];
+            for (let x = 0; x < 320; x += 20) {
+                for (let y = 0; y < 180; y += 20) {
+                    let h = random(360);
+                    fill(`oklch(50% 100% ${h})`);
+                    let c = random(chars);
+                    text(c, x, y + 20);
+                }
+            }
+            noLoop(); // draw() は一度だけ実行する
+        }
+        function draw(){
+            noStroke();
+            for (let i = 0; i < 300; i++) {
+                const x = random(5, 315);
+                const y = random(5, 175);
+                const h = random(0, 360);
+                let a = 1;
+                if ((x - 160) * (x - 160) * 0.316 + (y - 90) * (y -90) > 4900) {
+                    a = 0.1;
+                }
+                fill(`oklch(80% 70% ${h} / ${a})`)
+                ellipse(x, y, 10, 10);
+            }
+            noLoop();
+        }
         // alert("Hello, world!");
         //https://your_id.github.io/repository_name/
     </script>
