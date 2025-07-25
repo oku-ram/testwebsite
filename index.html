@@ -14,6 +14,15 @@
         <li></li>
     </ul>
     <p id="gradation"></p>
+    <p id="squares"></p>
+    <button id="clickbtn">Click!</button>
+    入力: <input type="text" id="cname" size="10"><br>
+    入力 (<span id="cdisplay"></span>)は
+          <span id="validity">無効な</span>色です。</p>
+    <input type="number" id="finput" value="0" min="0" max="22">
+        の階乗は <span id="fresult">1</span> です
+    色を選択: <input type="color" id="cpicker" value="#ff0000"><br>
+        選択した色は <code id="cstring">#ff0000</code> です。
     <script>
         const gradation = document.getElementById("gradation");
         for (let i = 0; i < 360; i += 15) {
@@ -21,6 +30,63 @@
             gradation.insertAdjacentHTML("beforeend",
                 `<span style="color: ${color};">█</span>`);
         }
+
+        const board =[["blue","white","red"],
+                      ["black","yellow","red"],
+                      ["orange","white","green"]];
+        const squares = document.getElementById("squares");
+        for(let row of board){
+            for(let color of row){
+                squares.insertAdjacentHTML("beforeend",
+                    `<span style="color: ${color};">█</span>`);
+            }
+            squares.insertAdjacentHTML("beforeend","<br>");
+        }
+
+        const clickbtn = document.getElementById("clickbtn");
+        clickbtn.addEventListener("click",ev => {
+            clickbtn.insertAdjacenHTML("beforeen","!");
+            if(clickbtn.innerHTML.length > 15){
+                clickbtn.innerHTML = "Click!";
+            }
+        });
+
+        const cname = document.getElementById("cname");
+        const cdisplay = document.getElementById("cdisplay");
+        const valibity = document.getElementById("valibity");
+        cname.addEventListener("change",ev => {
+            const color = cname.value;
+            cdisplay.innerHTML = color;
+            if(color && CSS.supports("color",color)){
+                cdisplay.style.color = color;
+                cdisplay.style.backgroundColor = null;
+                valibity.innerHTML = "有効な";
+            }else{
+                cdisplay.style.color = "white";
+                cdisplay.style.backgroundColor = "red";
+                validity.innerHTML = "無効な";
+            }
+        });
+
+        const finput = document.getElementById("finput");
+        const fresult = document.getElementById("fresult");
+        finput.addEventListener("change", ev => {
+            const input = finput.value;
+            let result = 1;
+            for(let i = 2; i <= input; i++){
+                result *= i;
+            }
+            fresult.innerHTML = result;
+        });
+
+        const cpicker = document.getElementById("cpicker");
+        const cstring = document.getElementById("cstring");
+        cpicker.addEventListener("change", ev => {
+            const color = cpicker.value;
+            cstring.innerHTML = color;
+            cstring.style.color = "white";
+            cstring.style.backgroundColor = color;
+        });
         // alert("Hello, world!");
         //https://your_id.github.io/repository_name/
     </script>
