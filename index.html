@@ -112,7 +112,7 @@
             fill("yellow");
             triangle(100, 150, 250, 150, 150, 100);
         }*/
-        function draw(){
+        /*function draw(){
             noStroke();
             for (y = 0; y < 180; y += 10) {
                 for (x = 0; x < 320; x += 10) {
@@ -160,6 +160,22 @@
             }
             noLoop();
         }*/
+        
+        function setup() {
+            createCanvas(320, 180);
+        }
+        function draw() {
+            stroke("black");
+            strokeWeight(0.1);
+            // ここに図形を描画するコードを追加
+            for (y = 0; y < 180; y += 10) {
+                for (x = 0; x < 320; x += 15) {
+                    fill(`oklch(75% 50% ${340 - y * 2})`);
+                    rect(x + 5, y + 5, 8, 8);
+                }
+            } 
+        }
+
         // alert("Hello, world!");
         //https://your_id.github.io/repository_name/
     </script>
