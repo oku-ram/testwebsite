@@ -44,8 +44,8 @@
         }
 
         const clickbtn = document.getElementById("clickbtn");
-        clickbtn.addEventListener("click",ev => {
-            clickbtn.insertAdjacenHTML("beforeen","!");
+        clickbtn.addEventListener("click", ev => {
+            clickbtn.insertAdjacentHTML("beforeen","!");
             if(clickbtn.innerHTML.length > 15){
                 clickbtn.innerHTML = "Click!";
             }
