@@ -1,30 +1,33 @@
 body{
-    background-color: #5d5f9f;
+    background-color: #f8bce2;
 }
 
 h1{
-    color:aquamarine;
+    color:rgb(87, 224, 179);
 }
 
 .image-container {
-  animation: poyo 1s ease-in-out forwards infinite;
+  animation: poyo 3s ease-in-out forwards infinite;
 } 
 @keyframes poyo {
   0%  {
     transform: scale(1.0, 1.0) translate(0, 0);
   }
-  15% {
+  5% {
     transform: scale(0.98, 0.9) translate(0, 5px);
   }
-  30% {
+  10% {
     transform: scale(1.02, 1.0) translate(0, 8px);
   }
-  50% {transform: scale(0.98, 1.05) translate(0, -8px);
+  16% {transform: scale(0.98, 1.05) translate(0, -8px);
   }
-  70% {
+  23% {
     transform: scale(1.0, 0.9) translate(0, 5px);
   }
-  100% {
+  33% {
+    transform: scale(1.0, 1.0) translate(0, 0);
+  }
+  100%{
     transform: scale(1.0, 1.0) translate(0, 0);
   }
   0%, 100% {
