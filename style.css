@@ -7,7 +7,7 @@ h1{
 }
 
 .image-container {
-  animation: poyo 1s ease-in-out forwards;
+  animation: poyo 1s ease-in-out infinite forwards;
 } 
 @keyframes poyo {
   0%  {
